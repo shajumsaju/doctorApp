@@ -1,0 +1,13 @@
+{
+    
+    "testing": {
+        "config_id": "testing",
+        "config_testmailid":"hariprasadn@sciera.com,shaleeshm@sciera.com,dhivyas@sciera.com,sivasakthibalana@sciera.com,manikandanv@sciera.com,karthik@sciera.com",
+        "database": "databasetimesheet"
+    },
+    
+    "production": {
+        "config_id": "production",
+         "database": "timesheetdatabase"
+    }
+}

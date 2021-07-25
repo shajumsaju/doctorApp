@@ -1,0 +1,72 @@
+service: timesheet-service
+
+custom:
+  secrets: ${file(secrets.json)}
+  serverless-offline:
+    port: 3536
+    host: 172.31.19.175
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: ${self:custom.secrets.NODE_ENV}
+  region: eu-central-1
+  environment: 
+    NODE_ENV: ${self:custom.secrets.NODE_ENV}
+    DB: ${self:custom.secrets.DB}
+
+functions:
+  app:
+    handler: server.run
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+
+plugins:
+  - serverless-offline
+  - serverless-domain-manager
+
+# service: timesheet-service
+# useDotenv: true
+
+# custom:
+#   secrets: ${file(secrets.json)}
+#   serverless-offline:
+#     port: 3540
+#     # host: 172.31.19.175
+
+# provider:
+#   name: aws
+#   runtime: nodejs12.x
+#   # stage: ${self:custom.secrets.NODE_ENV}
+#   region: eu-central-1
+#   stage: dev
+#   apiGateway:
+#     shouldStartNameWithService: true
+#   apiKeys:
+#     - timesheet-ng-2020-apikey"
+
+# functions:
+#   app:
+#     handler: server.run
+#     events:
+#       - http:
+#           path: /
+#           method: ANY
+#           cors: true
+#           private: true
+#       - http:
+#           path: /{proxy+}
+#           method: ANY
+#           cors: true
+#           private: true 
+
+# plugins:
+#   - serverless-offline
+#   # - serverless-domain-manager
