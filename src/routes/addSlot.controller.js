@@ -24,7 +24,6 @@ addSlotController
 
 //List the slot created by doctor
 .get('/', async (req, res, next) => {
-  
     var startDate = req.query.startDate;
     startDate = new Date(startDate)
     const section = await addSlotServices.getAvailableSlots(startDate).then(function(slotServices) {

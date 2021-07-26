@@ -42,13 +42,7 @@ slotController
             res.send({error: err})
         })  
        })
-
-    //    if(result){
-    //        console.log('---hi------------')
-    //     const updatedSlot = addSlot.updateSlot({"_id" :selectedTime._id}, {$set: {'status':true}}, {upsert: true,new:true})
-    //    }
-      
-          
+               
  })
 
 
